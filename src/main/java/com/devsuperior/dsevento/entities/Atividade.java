@@ -30,7 +30,7 @@ public class Atividade {
     @JoinTable(name = "bloco_atividade",
             joinColumns = @JoinColumn(name = "atividade_id"),
             inverseJoinColumns = @JoinColumn(name = "bloco_id"))
-    private Set<Atividade> blocos = new HashSet<>();
+    private Set<Bloco> blocos = new HashSet<>();
 
     public Atividade() {
     }
@@ -80,6 +80,14 @@ public class Atividade {
 
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
+    }
+
+    public Set<Participante> getParticipantes() {
+        return participantes;
+    }
+
+    public Set<Bloco> getBlocos() {
+        return blocos;
     }
 
     @Override
