@@ -2,7 +2,9 @@ package com.devsuperior.dsevento.entities;
 
 import jakarta.persistence.*;
 
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "tb_atividade")
@@ -16,6 +18,19 @@ public class Atividade {
     @Column(columnDefinition = "TEXT")
     private String descricao;
     private Double preco;
+
+    @ManyToOne
+    @JoinColumn(name = "categoria_id")
+    private Categoria categoria;
+
+    @ManyToMany(mappedBy = "atividades")
+    private Set<Participante> participantes = new HashSet<>();
+
+    @ManyToMany
+    @JoinTable(name = "bloco_atividade",
+            joinColumns = @JoinColumn(name = "atividade_id"),
+            inverseJoinColumns = @JoinColumn(name = "bloco_id"))
+    private Set<Atividade> blocos = new HashSet<>();
 
     public Atividade() {
     }
@@ -57,6 +72,14 @@ public class Atividade {
 
     public void setPreco(Double preco) {
         this.preco = preco;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
 
     @Override
