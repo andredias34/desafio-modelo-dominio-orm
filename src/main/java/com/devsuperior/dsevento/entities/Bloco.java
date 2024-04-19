@@ -59,6 +59,14 @@ public class Bloco {
         this.fim = fim;
     }
 
+    public Atividade getAtividade() {
+        return atividade;
+    }
+
+    public void setAtividade(Atividade atividade) {
+        this.atividade = atividade;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
