@@ -18,12 +18,12 @@ public class Participante {
     private String email;
 
     @ManyToMany
-    @JoinTable(name = "participante_atividade",
+    @JoinTable(name = "tb_participante_atividade",
             joinColumns = @JoinColumn(name = "participante_id"),
             inverseJoinColumns = @JoinColumn(name = "atividade_id"))
     private Set<Atividade> atividades = new HashSet<>();
 
-    public Participante() {
+     public Participante() {
     }
 
     public Participante(Integer id, String nome, String email) {

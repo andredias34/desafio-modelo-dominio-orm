@@ -3,8 +3,10 @@ package com.devsuperior.dsevento.entities;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "tb_categoria")
@@ -16,11 +18,11 @@ public class Categoria {
 
     @Column(columnDefinition = "TEXT")
     private String descricao;
-
+    
     @OneToMany(mappedBy = "categoria")
     private List<Atividade> atividades = new ArrayList<>();
 
-    public Categoria() {
+	public Categoria() {
     }
 
     public Categoria(Integer id, String descricao) {
@@ -43,10 +45,11 @@ public class Categoria {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
-
+    
     public List<Atividade> getAtividades() {
-        return atividades;
-    }
+		return atividades;
+	}
+
 
     @Override
     public boolean equals(Object o) {
